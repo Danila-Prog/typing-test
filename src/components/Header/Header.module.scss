@@ -1,0 +1,34 @@
+.header {
+    border-bottom: 2px solid #cdb4db;
+    margin-bottom: 3em;
+  }
+  @media (min-width: 700px) {
+    .header {
+      margin-bottom: 5em;
+    }
+  }
+  @media (min-width: 1280px) {
+    .header {
+      border-bottom: none;
+      box-shadow: unset;
+    }
+  }
+  
+  .headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 0;
+  }
+  @media (min-width: 700px) {
+    .headerContainer{
+      padding: 2em 0;
+    }
+  }
+  @media (min-width: 1280px) {
+    .headerContainer {
+      padding: 2em 2.5em;
+      border-bottom: 2px solid #cdb4db;
+    }
+  }
+  

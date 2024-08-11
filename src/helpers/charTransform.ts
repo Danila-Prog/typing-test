@@ -1,31 +1,19 @@
-import { TextType } from '../types/types';
+import style from "../components/Test/Test.module.scss";
+import {
+  GetCurrentCharType,
+  CompareCharsType,
+  restoreTTextType,
+} from "../types/types";
 
-type GetCurrentCharType = (
-  charsArray: TextType[], 
-  currentIndex: number
-) => TextType[];
-
-type CompareCharsType = (
-  charsArray: TextType[], 
-  currentIndex: number,
-  pressedKey: string,
-  mistakes: number,
-) => [
-  resultArr: TextType[],
-  currentIndex: number,
-  mistakes: number
-];
-
-type restoreTextType = (
-  charsArray: TextType[], 
-) => TextType[];
-
-export const getCurrentChar: GetCurrentCharType = (charsArray, currentIndex) => {
+export const getCurrentChar: GetCurrentCharType = (
+  charsArray,
+  currentIndex
+) => {
   return charsArray.map((item, index) => {
     if (index === currentIndex) {
       return {
         ...item,
-        class: 'current-char'
+        class: `${style.currentChar}`,
       };
     }
 
@@ -33,7 +21,12 @@ export const getCurrentChar: GetCurrentCharType = (charsArray, currentIndex) => 
   });
 };
 
-export const compareChars: CompareCharsType = (charsArray, currentIndex, pressedKey, mistakes) => {
+export const compareChars: CompareCharsType = (
+  charsArray,
+  currentIndex,
+  pressedKey,
+  mistakes
+) => {
   let newCurrentIndex = currentIndex;
   let newMistakes = mistakes;
 
@@ -42,13 +35,13 @@ export const compareChars: CompareCharsType = (charsArray, currentIndex, pressed
       newCurrentIndex += 1;
       return {
         ...item,
-        class: 'right-char'
+        class: `${style.rightChar}`,
       };
     } else if (index === currentIndex && item.char !== pressedKey) {
       newMistakes += 1;
       return {
         ...item,
-        class: 'wrong-char'
+        class: `${style.wrongChar}`,
       };
     }
 
@@ -58,18 +51,18 @@ export const compareChars: CompareCharsType = (charsArray, currentIndex, pressed
   return [resultArr, newCurrentIndex, newMistakes];
 };
 
-export const restoreText: restoreTextType = (charsArray) => {
+export const restoreText: restoreTTextType = (charsArray) => {
   return charsArray.map((item, index) => {
     if (index === 0) {
       return {
         ...item,
-        class: 'current-char'
+        class: `${style.currentChar}`,
       };
     }
 
     return {
       ...item,
-      class: ''
+      class: "",
     };
   });
 };

@@ -1,32 +1,23 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
 
-import getText from '../../api/getText';
+import {getText} from '../api/getText';
 
-import { TextType } from '../../types/types';
-
-type TextState = {
-  text: TextType[];
-  isLoading: boolean;
-  error: string | null | undefined;
-  currentCharIndex: number;
-  mistakes: number;
-  pressingCount: number;
-};
+import { TTextType, TTextState } from '../../types/types';
+import style from '../../components/Test/Test.module.scss'
 
 export const fetchText = createAsyncThunk<string, string, {rejectValue: string}>(
-  'textSlice/fetchText',
-  async function(sentences: string, {rejectWithValue}) {
+  'textSlice/fetchText',async function(sentences: string, {rejectWithValue}) {
     try {
       const response = await getText(sentences);
-      return response.data;
+      return response.data
     }
-    catch (e) {
+    catch (e) { 
       return rejectWithValue( (e as Error).message );
     }
   }
 );
 
-const initialState: TextState = {
+const initialState: TTextState = {
   text: [],
   isLoading: false,
   error: null,
@@ -39,7 +30,7 @@ const textSlice = createSlice({
   name: 'textSlice',
   initialState,
   reducers: {
-    setText(state, action: PayloadAction<TextType[]>) {
+    setText(state, action: PayloadAction<TTextType[]>) {
       state.text = action.payload;
     },
     setCurrentCharIndex(state, action: PayloadAction<number>) {
@@ -66,7 +57,7 @@ const textSlice = createSlice({
       .addCase(fetchText.fulfilled, (state, action) => {
         state.text = action.payload.split('').map((item, index) => {
           return index === 0 
-            ? {char: item, class: 'current-char'} 
+            ? {char: item, class: `${style.currentChar}`} 
             : {char: item, class: ''} 
         });
         state.isLoading = false;

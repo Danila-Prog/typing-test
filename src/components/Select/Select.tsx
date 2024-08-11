@@ -1,19 +1,10 @@
-import { ComponentPropsWithoutRef } from 'react';
+import style from './Select.module.scss'
+import { ISelect } from '../../types/types';
 
-import '../../style/ui/select.css';
-
-interface SelectProps extends ComponentPropsWithoutRef<'select'> {
-  defaultValue: string;
-  options: {
-    value: string,
-    name: string
-  }[];
-}
-
-const Select:React.FC<SelectProps> = ( {defaultValue, options, ...props} ) => {
+const Select = ( {defaultValue, options, ...props}: ISelect ) => {
   return (
     <select 
-      className='uppercase-text paragraph select'
+      className={style.select}
       defaultValue={defaultValue}
       {...props}
     >

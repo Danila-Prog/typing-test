@@ -1,5 +1,3 @@
-@import "variables.css";
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,10 +5,18 @@
 }
 
 #root {
-  background-color: var(--primary-light);
+  background-color: #edf2fb;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  
+}
+
+body {
+  color: #16425b;
+  font-size: 1.3rem;
+  letter-spacing: 1.1px;
+  line-height: 1.5em;
 }
 
 .container {

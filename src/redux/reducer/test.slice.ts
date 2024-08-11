@@ -1,15 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TTestSliceState } from '../../types/types';
 
-type TestState = {
-  isTestStarted: boolean;
-  isTestFinished: boolean;
-  sentences: string;
-}
-
-const initialState: TestState = {
+const initialState: TTestSliceState = {
   isTestStarted: false,
   isTestFinished: false,
-  sentences: '4',
+  sentences: '1',
 };
 
 const testSlice = createSlice({

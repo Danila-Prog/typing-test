@@ -1,0 +1,23 @@
+.statsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 1em;
+    border-radius: 7px;
+  }
+  @media (min-width: 700px) {
+    .stats-container {
+      padding: 2em;
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+  }
+  
+  .statTitle {
+    margin-bottom: 1em;
+  }
+  

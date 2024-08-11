@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TTimerSliceState } from '../../types/types';
 
-type TimerState = {
-  isTimerOn: boolean;
-  seconds: number;
-}
-
-const initialState: TimerState = {
+const initialState: TTimerSliceState = {
   isTimerOn: false,
   seconds: 0,
 };

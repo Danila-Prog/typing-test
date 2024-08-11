@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-async function getText(sentences: string) {
+export const getText = async(sentences: string) => {
   const response = await axios.get<string>('https://baconipsum.com/api/', {
     params: {
       type: 'all-meat',
@@ -8,8 +8,5 @@ async function getText(sentences: string) {
       format: 'text'
     }
   });
-
-  return response;
+  return response
 }
-
-export default getText;
