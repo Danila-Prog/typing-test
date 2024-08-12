@@ -23,7 +23,7 @@ const testSlice = createSlice({
     resetTestState(state) {
       state.isTestStarted = false;
       state.isTestFinished = false;
-      state.sentences = '4';
+      state.sentences = '1';
     }
   }
 });

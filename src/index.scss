@@ -2,18 +2,19 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-#root {
-  background-color: #edf2fb;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  border: none;
   
 }
 
+#root {
+  background-color: #a4aebd;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
-  color: #16425b;
+  color: #3a464c; 
   font-size: 1.3rem;
   letter-spacing: 1.1px;
   line-height: 1.5em;
@@ -21,15 +22,16 @@ body {
 
 .container {
   padding: 0 1.5em;
-}
-@media (min-width: 700px) {
-  .container {
-    padding: 0 3em;
+
+  @media (min-width: 700px) {
+    .container {
+      padding: 0 3em;
+    }
   }
-}
-@media (min-width: 1280px) {
-  .container {
-    padding: 0 10em;
+  @media (min-width: 1280px) {
+    .container {
+      padding: 0 10em;
+    }
   }
 }
 

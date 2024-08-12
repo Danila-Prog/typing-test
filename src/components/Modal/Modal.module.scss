@@ -14,18 +14,13 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 90%;
+    width: 50%;
     background-color: #ffffff;
-    border: 2px solid #cdb4db;
     border-radius: 15px;
     padding: 1.5em;
     text-align: center;
   }
-  @media (min-width: 700px) {
-    .modal-window {
-      width: 70%;
-    }
-  }
+ 
   
   .modalInfo {
     margin-bottom: 1.5em;

@@ -15,7 +15,7 @@ import { setIsTestFinished } from "../../redux/reducer/test.slice";
 import { getCurrentChar, compareChars } from "../../helpers/charTransform";
 import { useVariableSelector } from "../../hooks/useVariableSelector";
 
-const Text = () => {
+export const Text = () => {
   const dispatch = useAppDispatch();
   const {
     text,
@@ -27,20 +27,18 @@ const Text = () => {
     sentences,
   } = useVariableSelector();
 
-  const [isRequestSent, setIsRequestSent] = useState(false);
 
+  //Наш текст отрисовывается
   useEffect(() => {
-    if (!isRequestSent) {
-      dispatch(fetchText(sentences));
-      setIsRequestSent(true);
-    }
+    dispatch(fetchText(sentences));
   }, [dispatch]);
 
+  //На какой букве находимся
   useEffect(() => {
     const newText = getCurrentChar(text, currentCharIndex);
     dispatch(setText(newText));
   }, [dispatch, currentCharIndex]);
-
+  // что происходит при концовке текста
   useEffect(() => {
     if (pressingCount === 0 && text.length > 0) {
       dispatch(setIsTimerOn(true));
@@ -93,5 +91,3 @@ const Text = () => {
     </div>
   );
 };
-
-export default Text;

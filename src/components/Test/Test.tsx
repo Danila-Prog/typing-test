@@ -1,21 +1,23 @@
 import style from './Test.module.scss'
 
-import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
+import { useAppDispatch} from '../../hooks/useRedux';
 import { resetSeconds } from '../../redux/reducer/timer.slice';
 import { setIsTestFinished, resetTestState } from '../../redux/reducer/test.slice';
 import { resetTextState, setText } from '../../redux/reducer/text.slice';
 
 import { restoreText } from '../../helpers/charTransform';
 
-import Text from '../Text/Text';
+import {Text} from '../Text/Text';
 import { Stats } from '../Stats/Stats';
-import ModalWindow from '../Modal/Modal';
+import {ModalWindow} from '../Modal/Modal';
 import { useVariableSelector } from '../../hooks/useVariableSelector';
-const Test = () => {
+
+export const Test = () => {
   const dispatch = useAppDispatch();
   const {isTestFinished, text} = useVariableSelector()
 
-  function restart() {
+  // Перезагрузить тест
+  const restart = () => {
     dispatch(resetSeconds());
     dispatch(resetTextState());
     dispatch(setText(restoreText(text)));
@@ -24,8 +26,8 @@ const Test = () => {
       dispatch(setIsTestFinished(false));
     }
   }
-
-  function newTest() {
+  //Сделать новый тест
+  const newTest = () => {
     dispatch(resetTestState()); 
     dispatch(resetTextState());
     dispatch(resetSeconds());
@@ -35,7 +37,7 @@ const Test = () => {
     <section className={style.testContainer}>
       <Text />
       <Stats>
-        <button onClick={restart}>Restart</button>
+        <button onClick={restart} className={style.statsButton}>Restart</button>
       </Stats>
       {
         isTestFinished && 
@@ -48,5 +50,3 @@ const Test = () => {
     </section>
   );
 };
-
-export default Test;

@@ -1,7 +1,7 @@
 import style from './Select.module.scss'
 import { ISelect } from '../../types/types';
-
-const Select = ( {defaultValue, options, ...props}: ISelect ) => {
+//Выбор кол-во предложений
+export const Select = ( {defaultValue, options, ...props}: ISelect ) => {
   return (
     <select 
       className={style.select}
@@ -24,4 +24,3 @@ const Select = ( {defaultValue, options, ...props}: ISelect ) => {
   );
 };
 
-export default Select;

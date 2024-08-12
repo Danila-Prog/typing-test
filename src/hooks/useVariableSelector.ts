@@ -1,5 +1,5 @@
 import { useAppSelector } from "./useRedux";
-
+//Все варианты useSelector
 export const useVariableSelector = () => {
   const mistakes = useAppSelector((state) => state.textSlice.mistakes);
   const pressingCount = useAppSelector((state) => state.textSlice.pressingCount);

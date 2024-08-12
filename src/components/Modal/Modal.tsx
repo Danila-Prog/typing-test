@@ -1,8 +1,8 @@
 import style from './Modal.module.scss'
 import { TModal } from '../../types/types';
 
-
-const ModalWindow = ( {children, title}: TModal ) => {
+//Модальное окно
+export const ModalWindow = ( {children, title}: TModal ) => {
   return (
     <div className={style.modalWindowBlackout}>
       <div className={style.modalWindow}>
@@ -15,4 +15,3 @@ const ModalWindow = ( {children, title}: TModal ) => {
   );
 };
 
-export default ModalWindow;

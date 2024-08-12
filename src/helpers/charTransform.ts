@@ -4,7 +4,7 @@ import {
   CompareCharsType,
   restoreTTextType,
 } from "../types/types";
-
+//Получаем на какой букве находимся
 export const getCurrentChar: GetCurrentCharType = (
   charsArray,
   currentIndex

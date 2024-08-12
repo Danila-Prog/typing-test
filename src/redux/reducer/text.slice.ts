@@ -1,18 +1,21 @@
 import { createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
-
-import {getText} from '../api/getText';
-
+import axios from 'axios';
 import { TTextType, TTextState } from '../../types/types';
 import style from '../../components/Test/Test.module.scss'
 
 export const fetchText = createAsyncThunk<string, string, {rejectValue: string}>(
-  'textSlice/fetchText',async function(sentences: string, {rejectWithValue}) {
+  'textSlice/fetchText', async function(sentences: string, {rejectWithValue}) {
     try {
-      const response = await getText(sentences);
-      return response.data
-    }
-    catch (e) { 
-      return rejectWithValue( (e as Error).message );
+      const response = await axios.get<string>("https://baconipsum.com/api/", {
+        params: {
+          type: "all-meat",
+          sentences,
+          format: "text",
+        },
+      });
+      return response.data;
+    } catch (e) {
+      return rejectWithValue((e as Error).message);
     }
   }
 );
